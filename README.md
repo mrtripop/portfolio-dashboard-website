@@ -7,5 +7,5 @@ Learn about React component library with MUI, form with Formik, and more. These 
 - [React]('https://react.dev/')
 - [Formik]('https://formik.org/')
 - [Material UI]('https://mui.com/material-ui/getting-started/overview/')
-- [GithubCI]('')
+- [Github Action]('')
 - [Firebase Hosting]('')
