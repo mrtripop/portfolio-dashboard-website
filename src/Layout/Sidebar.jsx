@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { ProSidebar, Menu, MenuItem } from 'react-pro-sidebar'
 import { Box, IconButton, Typography, useTheme } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import 'react-pro-sidebar/dist/css/styles.css'
 import { tokens } from '../theme'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
@@ -17,16 +17,16 @@ import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined'
 
-const Item = ({ title, to, icon, selected, setSelected }) => {
+const Item = ({ title, path, to, icon, selected, setSelected }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   return (
     <MenuItem
-      active={selected === title}
+      active={selected === path}
       style={{
         color: colors.gray[100],
       }}
-      onClick={() => setSelected(title)}
+      onClick={() => setSelected(path)}
       icon={icon}
     >
       <Typography>{title}</Typography>
@@ -36,10 +36,12 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 }
 
 const MySidebar = () => {
+  const location = useLocation()
+  const path = location.pathname.split('/')[1]
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [selected, setSelected] = useState('Dashboard')
+  const [selected, setSelected] = useState(path)
 
   return (
     <Box
@@ -119,6 +121,7 @@ const MySidebar = () => {
           <Box paddingLeft={isCollapsed ? undefined : '10%'}>
             <Item
               title='Dashboard'
+              path='dashboard'
               to='/'
               icon={<HomeOutlinedIcon />}
               selected={selected}
@@ -134,6 +137,7 @@ const MySidebar = () => {
             </Typography>
             <Item
               title='Manage Team'
+              path='team'
               to='/team'
               icon={<PeopleOutlinedIcon />}
               selected={selected}
@@ -141,6 +145,7 @@ const MySidebar = () => {
             />
             <Item
               title='Contacts Information'
+              path='contacts'
               to='/contacts'
               icon={<ContactsOutlinedIcon />}
               selected={selected}
@@ -148,6 +153,7 @@ const MySidebar = () => {
             />
             <Item
               title='Invoices Balances'
+              path='invoices'
               to='/invoices'
               icon={<ReceiptOutlinedIcon />}
               selected={selected}
@@ -163,6 +169,7 @@ const MySidebar = () => {
             </Typography>
             <Item
               title='Profile Form'
+              path='form'
               to='/form'
               icon={<PersonOutlinedIcon />}
               selected={selected}
@@ -170,6 +177,7 @@ const MySidebar = () => {
             />
             <Item
               title='Calendar'
+              path='calendar'
               to='/calendar'
               icon={<CalendarTodayOutlinedIcon />}
               selected={selected}
@@ -177,6 +185,7 @@ const MySidebar = () => {
             />
             <Item
               title='FAQ Page'
+              path='faq'
               to='/faq'
               icon={<HelpOutlineOutlinedIcon />}
               selected={selected}
@@ -192,6 +201,7 @@ const MySidebar = () => {
             </Typography>
             <Item
               title='Bar Chart'
+              path='bar'
               to='/bar'
               icon={<BarChartOutlinedIcon />}
               selected={selected}
@@ -199,6 +209,7 @@ const MySidebar = () => {
             />
             <Item
               title='Pie Chart'
+              path='pie'
               to='/pie'
               icon={<PieChartOutlineOutlinedIcon />}
               selected={selected}
@@ -206,6 +217,7 @@ const MySidebar = () => {
             />
             <Item
               title='Line Chart'
+              path='line'
               to='/line'
               icon={<TimelineOutlinedIcon />}
               selected={selected}
@@ -213,6 +225,7 @@ const MySidebar = () => {
             />
             <Item
               title='Geography Chart'
+              path='geography'
               to='/geography'
               icon={<MapOutlinedIcon />}
               selected={selected}
