@@ -34,8 +34,8 @@ const FAQ = () => {
   return (
     <Box m='20px'>
       <Header title='FAQ' subtitle='Frequently Asked Questions Page' />
-      {faqs.map(faq => (
-        <Accordion defaultExpanded={faq.default}>
+      {faqs.map((faq, key) => (
+        <Accordion key={key} defaultExpanded={faq.default}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography color={colors.greenAccent[500]} variant='h5'>
               {faq.title}

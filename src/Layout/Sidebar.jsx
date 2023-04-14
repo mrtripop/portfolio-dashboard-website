@@ -41,7 +41,7 @@ const MySidebar = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [selected, setSelected] = useState(path)
+  const [selected, setSelected] = useState(!path ? 'dashboard' : path)
 
   return (
     <Box
